@@ -1,0 +1,54 @@
+version: "3.3"
+services:
+  #FILES
+  create_file:
+      image: davidtortola/analisisydiseno2:createfiles
+      networks: 
+        - net
+  read_file:
+      image: davidtortola/analisisydiseno2:readfiles
+      networks:
+        - net
+  update_file:
+      image: davidtortola/analisisydiseno2:updatefiles
+      networks: 
+        - net
+  delete_file:
+      image: davidtortola/analisisydiseno2:deletefiles
+      networks: 
+        - net
+  #FOLDER
+  create_folder:
+      image: davidtortola/analisisydiseno2:createfolders
+      networks: 
+        - net
+  read_folder:
+      image: davidtortola/analisisydiseno2:readfolders
+      networks: 
+        - net 
+  update_folder:
+      image: davidtortola/analisisydiseno2:updatefolders
+      networks:  
+        - net
+  delete_folder:
+      image: davidtortola/analisisydiseno2:deletefolders
+      networks: 
+        - net
+  #USERS
+  user_service:
+      image: davidtortola/analisisydiseno2:users
+      networks: 
+        - net
+  #MIDDLEWARE
+  middleware:
+      image: davidtortola/analisisydiseno2:middleware
+      ports:
+        - "5000:5000"
+      container_name: middleware_service
+      networks: 
+        - net
+
+networks: 
+  net:
+    driver: bridge
+    
